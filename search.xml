@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[基于华为云的CDH配置介绍]]></title>
+    <url>%2F2018%2F06%2F28%2F%E5%9F%BA%E4%BA%8E%E5%8D%8E%E4%B8%BA%E4%BA%91%E7%9A%84CDH%E9%85%8D%E7%BD%AE%E4%BB%8B%E7%BB%8D%2F</url>
+    <content type="text"><![CDATA[基础环境配置 说明：参考文章CDH伪分布搭建教程。此处作为补充。整个操作在root用户下进行。 安装图形化界面（非必须） 1234yum groupinstall "X Window System" #1yum groupinstall "GNOME Desktop" "Graphical Administration Tools" #2ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target #3reboot #4 安装Anaconda 说明：考虑到多用户使用存在的权限问题，将安装路径设置为/usr/local/anaconda3。 更改权限： 1chmod 777 Anaconda3-5.1.0-Linux-x86_64.sh 执行安装，安装过程中手动添加安装路径/usr/local/anaconda3，选择添加path至~/.bashrc中，不安装Mircosoft vsCode。 1sh Anaconda3-5.1.0-Linux-x86_64.sh 添加spyder链接： 方便在MobaXterm中打开图形化界面。 1ln -s /usr/local/anaconda3/bin/spyder /usr/bin/spyder 重启： 1reboot 添加hive服务 添加hive所需库： 1234567-- 在mysql中执行create user 'hive'@'%' identified by 'Password3#';grant all on *.* to 'hive'@'%' identified by 'Password3#';flush privileges;create database metastore;alter database hive character set latin1; 添加zookeeper服务 添加hive服务，数据库选择metastore 添加spark2服务 准备文件 spark2 Anaconda 安装步骤 将SPARK2_ON_YARN-2.1.0.cloudera2.jar拷贝到/opt/cloudera/csd，并且更改用户权限chown cloudera-scm:cloudera-scm 将其他文件拷贝到/opt/cloudera/parcel-repo 关闭CDH集群，重启cm server和cm agent，启动CDH集群: 12service cloudera-scm-server restartservice cloudera-scm-agent restart 进入cm页面，选择Hosts——&gt;Parcels: 按照提示进行分配安装，激活： 点击集群，添加spark2服务。 过程中遇到的问题 安装成功后运行pyspark代码报错：]]></content>
+      <categories>
+        <category>CDH环境配置</category>
+      </categories>
+      <tags>
+        <tag>CDH</tag>
+        <tag>华为云</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[github&hexo博客搭建教程]]></title>
+    <url>%2F2018%2F06%2F28%2Fgithub-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[CDH伪分布搭建教程]]></title>
     <url>%2F2018%2F06%2F27%2FCDH%E4%BC%AA%E5%88%86%E5%B8%83%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[基础环境配置 配置hosts 12sudo vim /etc/hosts 192.168.137.134 master 关闭防火墙 12345sudo systemctl stop firewalld.service #停止firewallsudo systemctl disable firewalld.service #禁止firewall开机启动sudo /etc/sysconfig/selinux SELINUX=disabled #修改sudo setenforce 0 配置无密码登陆 配置本地yum源 1234567891011sudo mkdir /usr/local/src #1. 将CentOS-7-x86_64-DVD-1611.iso拷贝至此sudo mkdir /usr/local/media #2.sudo mount -o loop /usr/local/src/CentOS-7-x86_64-DVD-1611.iso /usr/local/mediaCentOS7/ #3.vim /etc/yum.repos.d/CentOS7-Localsource.repo #4. 并添加一下内容 [CentOS7-Localsource] name=CentOS7 baseurl=file:///usr/local/media/CentOS7 enabled=1 gpgcheck=0sudo yum clean all #5.sudo yum makecache #6. 安装JDK 卸载openJDK 12sudo rpm -qa | grep javasudo yum remove java* 安装Oracle JDK 12345678tar xvf jdk-8u144-linux-x64.gz #路径：/usr/javasudo vim /etc/profile # 末尾添加 export JAVA_HOME=/usr/java/jdk1.8.0_144 export CLASSPATH=.:$CLASSPTAH:$JAVA_HOME/lib export PATH=$PATH:$JAVA_HOME/binsource /etc/profile 安装成功显示 拷贝JDBC驱动包 1cp mysql-connector-java.jar /usr/share/java #路径需要创建 时区配置 查看时区 1date -R 若不为+0800则更改时区为上海 1sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 安装mysql数据库 安装mysql 1234567891011wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpmsudo yum localinstall mysql57-community-release-el7-8.noarch.rpmsudo yum install -y mysql-community-serversudo systemctl start mysqldsudo systemctl enable mysqldsudo systemctl daemon-reload 更改密码 创建cm配置过程中所需的库 配置用户权限 CM安装 在节点安装CM 拷贝CM相关文件至指定目录 安装 12sudo yum localinstall --nogpgcheck *.rpmsudo ./scm_prepare_database.sh mysql -hmaster -uamon -pPassword3# --scm-host master scm scm Password3# CDH服务安装 启动服务 12sudo service cloudera-scm-server startsudo service cloudera-scm-agent start 准备安装文件 安装cdh 登录master:7180，显示如下界面，user/password:admin/admin 选择试用版 选择节点 安装cdh 遇到的问题 问题1： 安装yarn的过程中出错： 解决方案 更改目录权限]]></content>
