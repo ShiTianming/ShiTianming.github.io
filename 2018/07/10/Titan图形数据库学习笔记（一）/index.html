@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hadoop,CDH," />
+  <meta name="keywords" content="Titan,Elasticsearch," />
 
 
 
@@ -79,47 +79,24 @@
 
 
 
-<meta name="description" content="基础环境配置 配置hosts   12sudo vim /etc/hosts    192.168.137.134 master  关闭防火墙   12345sudo systemctl stop firewalld.service  #停止firewallsudo systemctl disable firewalld.service  #禁止firewall开机启动sudo /etc/sysc">
-<meta name="keywords" content="hadoop,CDH">
+<meta name="description" content="Titan数据库简介 Titan 是一个可扩展的图形数据库，结合HBase、Cassandra、BerkeleyDB提供存储功能，ES、Lucene、Solar提供索引功能，可利用Hadoop计算框架对图数据进行分析、统计。经过优化，可用于存储和索引分布于多节点集群的百亿级顶点和边的图，同时，Titan又是一个事务数据库，可以支持数千个并发用户实时执行复杂图形遍历。    框架Titan是一个图形">
+<meta name="keywords" content="Titan,Elasticsearch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CDH伪分布搭建教程">
-<meta property="og:url" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/index.html">
+<meta property="og:title" content="Titan图形数据库学习笔记（一）">
+<meta property="og:url" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/index.html">
 <meta property="og:site_name" content="天明的博客">
-<meta property="og:description" content="基础环境配置 配置hosts   12sudo vim /etc/hosts    192.168.137.134 master  关闭防火墙   12345sudo systemctl stop firewalld.service  #停止firewallsudo systemctl disable firewalld.service  #禁止firewall开机启动sudo /etc/sysc">
+<meta property="og:description" content="Titan数据库简介 Titan 是一个可扩展的图形数据库，结合HBase、Cassandra、BerkeleyDB提供存储功能，ES、Lucene、Solar提供索引功能，可利用Hadoop计算框架对图数据进行分析、统计。经过优化，可用于存储和索引分布于多节点集群的百亿级顶点和边的图，同时，Titan又是一个事务数据库，可以支持数千个并发用户实时执行复杂图形遍历。    框架Titan是一个图形">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_20-21-36.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_20-26-15.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_21-49-01.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_21-54-14.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_21-59-20.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_21-56-55.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_21-58-14.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_22-06-29.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_22-17-21.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_22-25-07.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_22-27-15.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_22-29-08.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_22-30-18.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_22-30-31.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-03-54.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-04-34.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-05-09.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-10-41.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-14-54.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-15-29.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-16-47.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-18-34.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-19-12.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-41-40.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-46-55.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-36-24.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-54-58.png">
-<meta property="og:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-31_00-55-05.png">
-<meta property="og:updated_time" content="2018-06-27T02:00:22.475Z">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-10_13-57-47.png">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-11_14-35-21.png">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-11_14-37-53.png">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-11_15-04-23.png">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-11_15-05-54.png">
+<meta property="og:updated_time" content="2018-07-11T07:56:46.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CDH伪分布搭建教程">
-<meta name="twitter:description" content="基础环境配置 配置hosts   12sudo vim /etc/hosts    192.168.137.134 master  关闭防火墙   12345sudo systemctl stop firewalld.service  #停止firewallsudo systemctl disable firewalld.service  #禁止firewall开机启动sudo /etc/sysc">
-<meta name="twitter:image" content="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/Snipaste_2018-05-30_20-21-36.png">
+<meta name="twitter:title" content="Titan图形数据库学习笔记（一）">
+<meta name="twitter:description" content="Titan数据库简介 Titan 是一个可扩展的图形数据库，结合HBase、Cassandra、BerkeleyDB提供存储功能，ES、Lucene、Solar提供索引功能，可利用Hadoop计算框架对图数据进行分析、统计。经过优化，可用于存储和索引分布于多节点集群的百亿级顶点和边的图，同时，Titan又是一个事务数据库，可以支持数千个并发用户实时执行复杂图形遍历。    框架Titan是一个图形">
+<meta name="twitter:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-10_13-57-47.png">
 
 
 
@@ -149,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/"/>
+  <link rel="canonical" href="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/"/>
 
 
 
 
 
-  <title>CDH伪分布搭建教程 | 天明的博客</title>
+  <title>Titan图形数据库学习笔记（一） | 天明的博客</title>
   
 
 
@@ -326,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shitianming.github.io/2018/06/27/CDH伪分布搭建教程/">
+    <link itemprop="mainEntityOfPage" href="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="天明">
@@ -343,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CDH伪分布搭建教程</h1>
+          <h1 class="post-title" itemprop="name headline">Titan图形数据库学习笔记（一）</h1>
         
 
         <div class="post-meta">
@@ -355,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-27T01:51:55+08:00">
-                2018-06-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-10T10:55:11+08:00">
+                2018-07-10
               </time>
             
 
@@ -378,8 +355,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CDH环境配置/" itemprop="url" rel="index">
-                    <span itemprop="name">CDH环境配置</span>
+                  <a href="/categories/图形数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">图形数据库</span>
                   </a>
                 </span>
 
@@ -395,7 +372,7 @@
 
           
           
-             <span id="/2018/06/27/CDH伪分布搭建教程/" class="leancloud_visitors" data-flag-title="CDH伪分布搭建教程">
+             <span id="/2018/07/10/Titan图形数据库学习笔记（一）/" class="leancloud_visitors" data-flag-title="Titan图形数据库学习笔记（一）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -426,91 +403,63 @@
       
 
       
-        <h2 id="基础环境配置"><a href="#基础环境配置" class="headerlink" title="基础环境配置"></a>基础环境配置</h2><ul>
-<li><p>配置hosts</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br><span class="line">    192.168.137.134 master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://www.jianshu.com/p/d6414b5295b8" target="_blank" rel="noopener">关闭防火墙</a></p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop firewalld.service  #停止firewall</span><br><span class="line">sudo systemctl disable firewalld.service  #禁止firewall开机启动</span><br><span class="line">sudo /etc/sysconfig/selinux</span><br><span class="line">    SELINUX=disabled  #修改</span><br><span class="line">sudo setenforce 0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置无密码登陆<br>  <img src="Snipaste_2018-05-30_20-21-36.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-30_20-26-15.png" alt=""></p>
-</li>
-</ul>
+        <h2 id="Titan数据库简介"><a href="#Titan数据库简介" class="headerlink" title="Titan数据库简介"></a>Titan数据库简介</h2><blockquote>
+<p>Titan 是一个可扩展的图形数据库，结合HBase、Cassandra、BerkeleyDB提供存储功能，ES、Lucene、Solar提供索引功能，可利用Hadoop计算框架对图数据进行分析、统计。经过优化，可用于存储和索引分布于多节点集群的百亿级顶点和边的图，同时，Titan又是一个事务数据库，可以支持数千个并发用户实时执行复杂图形遍历。 </p>
+</blockquote>
+<ol>
+<li><p>框架<br>Titan是一个图形数据库引擎，其本身专注于紧凑图表序列化，丰富的图形数据库建模和高效的查询执行。其框架主要如下:<br> <img src="Snipaste_2018-07-10_13-57-47.png" alt=""><br> Titan与底层磁盘之间有多个存储和索引适配器：</p>
 <ul>
-<li><p>配置本地yum源</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/local/src #1. 将CentOS-7-x86_64-DVD-1611.iso拷贝至此</span><br><span class="line">sudo mkdir /usr/local/media #2.</span><br><span class="line">sudo mount -o loop /usr/local/src/CentOS-7-x86_64-DVD-1611.iso /usr/local/mediaCentOS7/ #3.</span><br><span class="line">vim /etc/yum.repos.d/CentOS7-Localsource.repo #4. 并添加一下内容</span><br><span class="line">    [CentOS7-Localsource]</span><br><span class="line">    name=CentOS7</span><br><span class="line">    baseurl=file:///usr/local/media/CentOS7</span><br><span class="line">    enabled=1</span><br><span class="line">    gpgcheck=0</span><br><span class="line">sudo yum clean all #5.</span><br><span class="line">sudo yum makecache  #6.</span><br></pre></td></tr></table></figure>
+<li>存储：<ul>
+<li>Cassandra</li>
+<li>HBase</li>
+<li>BerkeleyDB</li>
+</ul>
 </li>
-<li><p>安装JDK</p>
+<li><p>索引：</p>
 <ul>
-<li><p>卸载openJDK</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -qa | grep java</span><br><span class="line">sudo yum remove java*</span><br></pre></td></tr></table></figure>
+<li>Elasticsearch</li>
+<li>Solr</li>
+<li>Lucene</li>
+</ul>
+<p>Titan提供了三种交互式接口：</p>
 </li>
-<li><p>安装Oracle JDK</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar xvf jdk-8u144-linux-x64.gz #路径：/usr/java</span><br><span class="line"></span><br><span class="line">sudo vim /etc/profile</span><br><span class="line">    # 末尾添加</span><br><span class="line">    export JAVA_HOME=/usr/java/jdk1.8.0_144</span><br><span class="line">    export CLASSPATH=.:$CLASSPTAH:$JAVA_HOME/lib</span><br><span class="line">    export PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装成功显示<br>  <img src="Snipaste_2018-05-30_21-49-01.png" alt=""></p>
-</li>
+<li>TitanGraph API</li>
+<li>TinkPop API</li>
+<li>Management API</li>
 </ul>
 </li>
-<li><p>拷贝JDBC驱动包</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp mysql-connector-java.jar /usr/share/java #路径需要创建</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>时区配置</p>
+</ol>
+<h2 id="Titan数据库环境配置"><a href="#Titan数据库环境配置" class="headerlink" title="Titan数据库环境配置"></a>Titan数据库环境配置</h2><ol>
+<li>下载<a href="https://github.com/thinkaurelius/titan/wiki/Downloads" target="_blank" rel="noopener">titan-1.0.0-hadoop2.zip</a>解压。</li>
+<li><p>配置文件</p>
 <ul>
-<li><p>查看时区</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date -R</span><br></pre></td></tr></table></figure>
+<li><p>进入<code>conf/es</code>文件夹，配置<code>elasticsearch.yml</code>，截取如下：</p>
+  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">path.data:</span> <span class="string">db/es/data</span></span><br><span class="line"><span class="string">path.work:</span> <span class="string">db/es/work</span></span><br><span class="line"><span class="string">path.logs:</span> <span class="string">log</span></span><br><span class="line"><span class="string">path.plugins:</span> <span class="string">bin/esplugins</span></span><br><span class="line"><span class="string">network.host:</span> <span class="number">22.144</span><span class="number">.110</span><span class="number">.125</span></span><br><span class="line"><span class="string">transport.tcp.port:</span> <span class="number">9300</span></span><br><span class="line"><span class="string">http.port:</span> <span class="number">9200</span></span><br><span class="line"><span class="string">discovery.zen.ping.unicast.hosts:</span> <span class="string">["hadoop1","hadoop2","hadoop3","hadoop4","hadoop5","hadoop6"]</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>若不为+0800则更改时区为上海</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<li><p>进入<code>conf</code>文件夹，配置<code>titan-hbase-es.properties</code>，截取如下：</p>
+  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">storage.backend=hbase</span></span><br><span class="line"><span class="string">storage.hostname=hadoop1,</span> <span class="string">hadoop2,</span> <span class="string">hadoop3,</span> <span class="string">hadoop4,</span> <span class="string">hadoop5,</span> <span class="string">hadoop6</span></span><br><span class="line"><span class="string">cache.db-cache</span> <span class="string">=</span> <span class="literal">true</span></span><br><span class="line"><span class="string">cache.db-cache-clean-wait</span> <span class="string">=</span> <span class="number">20</span></span><br><span class="line"><span class="string">cache.db-cache-time</span> <span class="string">=</span> <span class="number">180000</span></span><br><span class="line"><span class="string">cache.db-cache-size</span> <span class="string">=</span> <span class="number">0.5</span></span><br><span class="line"><span class="string">index.search.backend=elasticsearch</span></span><br><span class="line"><span class="string">index.search.hostname=hadoop5</span></span><br><span class="line"><span class="string">index.search.elasticsearch.client-only=true</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+</li>
+<li><p>启动</p>
 <ul>
-<li><p><a href="https://www.linuxidc.com/Linux/2016-09/135288.htm" target="_blank" rel="noopener">安装mysql数据库</a></p>
+<li>进入<code>bin</code>目录，运行<code>elasticsearch</code>：<br>  <img src="Snipaste_2018-07-11_14-35-21.png" alt=""></li>
+<li>重开终端，运行<code>gremlin.sh</code>：<br>  <img src="Snipaste_2018-07-11_14-37-53.png" alt=""></li>
+<li><p>输入以下脚本：</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph = TitanFactory.open(<span class="string">'../conf/titan-hbase-es.properties'</span>)</span><br><span class="line">g = graph.traversal()</span><br><span class="line">saturn = g.V().has(<span class="string">'name'</span>, <span class="string">'saturn'</span>).next()</span><br></pre></td></tr></table></figure>
+<p>  <img src="Snipaste_2018-07-11_15-04-23.png" alt=""><br>  <img src="Snipaste_2018-07-11_15-05-54.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
 <ul>
-<li><p>安装mysql</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wget http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm</span><br><span class="line"></span><br><span class="line">sudo yum localinstall mysql57-community-release-el7-8.noarch.rpm</span><br><span class="line"></span><br><span class="line">sudo yum install -y mysql-community-server</span><br><span class="line"></span><br><span class="line">sudo systemctl start mysqld</span><br><span class="line"></span><br><span class="line">sudo systemctl enable mysqld</span><br><span class="line"></span><br><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改密码<br>  <img src="Snipaste_2018-05-30_21-54-14.png" alt=""></p>
-</li>
-<li>创建cm配置过程中所需的库<br>  <img src="Snipaste_2018-05-30_21-59-20.png" alt=""></li>
-<li>配置用户权限<br>  <img src="Snipaste_2018-05-30_21-56-55.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-30_21-58-14.png" alt=""></li>
+<li><a href="http://s3.thinkaurelius.com/docs/titan/1.0.0/getting-started.html" target="_blank" rel="noopener">http://s3.thinkaurelius.com/docs/titan/1.0.0/getting-started.html</a></li>
+<li><a href="http://database.51cto.com/art/201804/570147.htm" target="_blank" rel="noopener">http://database.51cto.com/art/201804/570147.htm</a></li>
+<li><a href="https://blog.csdn.net/samhacker/article/details/39721131" target="_blank" rel="noopener">https://blog.csdn.net/samhacker/article/details/39721131</a></li>
+<li><a href=""></a></li>
 </ul>
-</li>
-</ul>
-<h2 id="CM安装"><a href="#CM安装" class="headerlink" title="CM安装"></a>CM安装</h2><ul>
-<li><p>在节点安装CM</p>
-<ul>
-<li>拷贝CM相关文件至指定目录<br>  <img src="Snipaste_2018-05-30_22-06-29.png" alt=""></li>
-<li><p>安装</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum localinstall --nogpgcheck *.rpm</span><br><span class="line">sudo ./scm_prepare_database.sh mysql -hmaster -uamon -pPassword3# --scm-host master scm scm Password3#</span><br></pre></td></tr></table></figure>
-<p>  <img src="Snipaste_2018-05-30_22-17-21.png" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CDH服务安装"><a href="#CDH服务安装" class="headerlink" title="CDH服务安装"></a>CDH服务安装</h2><ul>
-<li><p>启动服务</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service cloudera-scm-server start</span><br><span class="line">sudo service cloudera-scm-agent start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>准备安装文件<br>  <img src="Snipaste_2018-05-30_22-25-07.png" alt=""></p>
-</li>
-<li>安装cdh<ul>
-<li>登录master:7180，显示如下界面，user/password:admin/admin<br>  <img src="Snipaste_2018-05-30_22-27-15.png" alt=""></li>
-<li>选择试用版<br>  <img src="Snipaste_2018-05-30_22-29-08.png" alt=""></li>
-<li>选择节点<br>  <img src="Snipaste_2018-05-30_22-30-18.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-30_22-30-31.png" alt=""></li>
-<li>安装cdh<br>  <img src="Snipaste_2018-05-31_00-03-54.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-04-34.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-05-09.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-10-41.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-14-54.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-15-29.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-16-47.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-18-34.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-19-12.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-41-40.png" alt=""><br>  <br><br>  <img src="Snipaste_2018-05-31_00-46-55.png" alt=""></li>
-</ul>
-</li>
-</ul>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ul>
-<li>问题1：<ul>
-<li>安装yarn的过程中出错：<br>  <img src="Snipaste_2018-05-31_00-36-24.png" alt=""></li>
-<li>解决方案<br>  <a href="http://www.cnblogs.com/DBA-Ivan/p/7898235.html" target="_blank" rel="noopener">更改目录权限</a><br>  <img src="Snipaste_2018-05-31_00-54-58.png" alt=""><br>  <img src="Snipaste_2018-05-31_00-55-05.png" alt=""></li>
-</ul>
-</li>
-</ul>
+</blockquote>
 
       
     </div>
@@ -528,9 +477,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+            <a href="/tags/Titan/" rel="tag"># Titan</a>
           
-            <a href="/tags/CDH/" rel="tag"># CDH</a>
+            <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
           
         </div>
       
@@ -543,15 +492,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/28/基于华为云的CDH配置介绍/" rel="next" title="基于华为云的CDH配置介绍">
+                <i class="fa fa-chevron-left"></i> 基于华为云的CDH配置介绍
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/28/github-hexo博客搭建教程/" rel="prev" title="github&hexo博客搭建教程">
-                github&hexo博客搭建教程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -702,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础环境配置"><span class="nav-number">1.</span> <span class="nav-text">基础环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CM安装"><span class="nav-number">2.</span> <span class="nav-text">CM安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CDH服务安装"><span class="nav-number">3.</span> <span class="nav-text">CDH服务安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">4.</span> <span class="nav-text">遇到的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Titan数据库简介"><span class="nav-number">1.</span> <span class="nav-text">Titan数据库简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Titan数据库环境配置"><span class="nav-number">2.</span> <span class="nav-text">Titan数据库环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
