@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-11_14-37-53.png">
 <meta property="og:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-11_15-04-23.png">
 <meta property="og:image" content="https://shitianming.github.io/2018/07/10/Titan图形数据库学习笔记（一）/Snipaste_2018-07-11_15-05-54.png">
-<meta property="og:updated_time" content="2018-07-11T07:56:46.913Z">
+<meta property="og:updated_time" content="2018-07-11T08:03:46.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Titan图形数据库学习笔记（一）">
 <meta name="twitter:description" content="Titan数据库简介 Titan 是一个可扩展的图形数据库，结合HBase、Cassandra、BerkeleyDB提供存储功能，ES、Lucene、Solar提供索引功能，可利用Hadoop计算框架对图数据进行分析、统计。经过优化，可用于存储和索引分布于多节点集群的百亿级顶点和边的图，同时，Titan又是一个事务数据库，可以支持数千个并发用户实时执行复杂图形遍历。    框架Titan是一个图形">
@@ -407,28 +407,28 @@
 <p>Titan 是一个可扩展的图形数据库，结合HBase、Cassandra、BerkeleyDB提供存储功能，ES、Lucene、Solar提供索引功能，可利用Hadoop计算框架对图数据进行分析、统计。经过优化，可用于存储和索引分布于多节点集群的百亿级顶点和边的图，同时，Titan又是一个事务数据库，可以支持数千个并发用户实时执行复杂图形遍历。 </p>
 </blockquote>
 <ol>
-<li><p>框架<br>Titan是一个图形数据库引擎，其本身专注于紧凑图表序列化，丰富的图形数据库建模和高效的查询执行。其框架主要如下:<br> <img src="Snipaste_2018-07-10_13-57-47.png" alt=""><br> Titan与底层磁盘之间有多个存储和索引适配器：</p>
-<ul>
+<li>框架<br>Titan是一个图形数据库引擎，其本身专注于紧凑图表序列化，丰富的图形数据库建模和高效的查询执行。其框架主要如下:<br> <img src="Snipaste_2018-07-10_13-57-47.png" alt=""><br> Titan与底层磁盘之间有多个存储和索引适配器：<ul>
 <li>存储：<ul>
 <li>Cassandra</li>
 <li>HBase</li>
 <li>BerkeleyDB</li>
 </ul>
 </li>
-<li><p>索引：</p>
-<ul>
+<li>索引：<ul>
 <li>Elasticsearch</li>
 <li>Solr</li>
 <li>Lucene</li>
 </ul>
-<p>Titan提供了三种交互式接口：</p>
 </li>
+</ul>
+</li>
+</ol>
+<p>Titan提供了三种交互式接口：</p>
+<ul>
 <li>TitanGraph API</li>
 <li>TinkPop API</li>
 <li>Management API</li>
 </ul>
-</li>
-</ol>
 <h2 id="Titan数据库环境配置"><a href="#Titan数据库环境配置" class="headerlink" title="Titan数据库环境配置"></a>Titan数据库环境配置</h2><ol>
 <li>下载<a href="https://github.com/thinkaurelius/titan/wiki/Downloads" target="_blank" rel="noopener">titan-1.0.0-hadoop2.zip</a>解压。</li>
 <li><p>配置文件</p>
