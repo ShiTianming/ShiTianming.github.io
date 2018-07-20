@@ -110,7 +110,7 @@
 <meta property="og:image" content="https://shitianming.github.io/2018/07/19/spark之RDD基础简介/Snipaste_2018-07-20_10-56-54.png">
 <meta property="og:image" content="https://shitianming.github.io/2018/07/19/spark之RDD基础简介/Snipaste_2018-07-20_11-15-27.png">
 <meta property="og:image" content="https://shitianming.github.io/2018/07/19/spark之RDD基础简介/Snipaste_2018-07-20_11-20-22.png">
-<meta property="og:updated_time" content="2018-07-20T03:29:22.637Z">
+<meta property="og:updated_time" content="2018-07-20T03:32:29.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spark之RDD基础简介">
 <meta name="twitter:description" content="RDD简介RDD全称为弹性分布式数据集（Resilient Distributed Dataset），是spark的编程模型，是MapReduce模型的扩展和延伸，可以在并行计算阶段高效地进行数据共享。 RDD基础RDD类型RDD主要分为以下四种类型：  创建操作：用于RDD创建工作。主要有两种方法：来自于内存集合和外部存储系统；通过转换操作生成的RDD。 转换操作：将RDD通过一定的操作变换成新">
@@ -429,8 +429,7 @@
 <li>控制操作：进行RDD持久化。让RDD根据不同的存储策略保存在内存或者磁盘中。</li>
 <li>行动操作：能够触发<code>spark</code>运行的操作。<code>spark</code>中行动操作分为两类：一类的操作结果变成<code>scala</code>集合或变量，另一类的操作是将RDD保存到外部文件系统或者数据库中。</li>
 </ul>
-<p>###创建RDD</p>
-<ul>
+<h3 id="创建RDD"><a href="#创建RDD" class="headerlink" title="创建RDD"></a>创建RDD</h3><ul>
 <li>并行化集合创建操作<blockquote>
 <p>使用<code>SparkContext</code>的<code>parallelize</code>方法，在一个已经存在的<code>scala</code>集合上创建。集合的对象将会被复制，创建出一个可以被并行操作的分布式数据集。<br>  <img src="Snipaste_2018-07-19_15-55-57.png" alt=""></p>
 </blockquote>
@@ -676,7 +675,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDD简介"><span class="nav-number">1.</span> <span class="nav-text">RDD简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDD基础"><span class="nav-number">2.</span> <span class="nav-text">RDD基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD类型"><span class="nav-number">2.1.</span> <span class="nav-text">RDD类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD依赖关系"><span class="nav-number">2.2.</span> <span class="nav-text">RDD依赖关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD的分区数"><span class="nav-number">2.3.</span> <span class="nav-text">RDD的分区数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD分区计算（Iterator）"><span class="nav-number">2.4.</span> <span class="nav-text">RDD分区计算（Iterator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD分区函数（Partitioner）"><span class="nav-number">2.5.</span> <span class="nav-text">RDD分区函数（Partitioner）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD基本转换操作"><span class="nav-number">2.6.</span> <span class="nav-text">RDD基本转换操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD键值转换操作"><span class="nav-number">2.7.</span> <span class="nav-text">RDD键值转换操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD行动操作"><span class="nav-number">2.8.</span> <span class="nav-text">RDD行动操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDD简介"><span class="nav-number">1.</span> <span class="nav-text">RDD简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDD基础"><span class="nav-number">2.</span> <span class="nav-text">RDD基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD类型"><span class="nav-number">2.1.</span> <span class="nav-text">RDD类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建RDD"><span class="nav-number">2.2.</span> <span class="nav-text">创建RDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD依赖关系"><span class="nav-number">2.3.</span> <span class="nav-text">RDD依赖关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD的分区数"><span class="nav-number">2.4.</span> <span class="nav-text">RDD的分区数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD分区计算（Iterator）"><span class="nav-number">2.5.</span> <span class="nav-text">RDD分区计算（Iterator）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD分区函数（Partitioner）"><span class="nav-number">2.6.</span> <span class="nav-text">RDD分区函数（Partitioner）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD基本转换操作"><span class="nav-number">2.7.</span> <span class="nav-text">RDD基本转换操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD键值转换操作"><span class="nav-number">2.8.</span> <span class="nav-text">RDD键值转换操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RDD行动操作"><span class="nav-number">2.9.</span> <span class="nav-text">RDD行动操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
