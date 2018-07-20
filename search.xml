@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[spark之RDD基础简介]]></title>
+    <url>%2F2018%2F07%2F19%2Fspark%E4%B9%8BRDD%E5%9F%BA%E7%A1%80%E7%AE%80%E4%BB%8B%2F</url>
+    <content type="text"><![CDATA[RDD简介RDD全称为弹性分布式数据集（Resilient Distributed Dataset），是spark的编程模型，是MapReduce模型的扩展和延伸，可以在并行计算阶段高效地进行数据共享。 RDD基础RDD类型RDD主要分为以下四种类型： 创建操作：用于RDD创建工作。主要有两种方法：来自于内存集合和外部存储系统；通过转换操作生成的RDD。 转换操作：将RDD通过一定的操作变换成新的RDD。 控制操作：进行RDD持久化。让RDD根据不同的存储策略保存在内存或者磁盘中。 行动操作：能够触发spark运行的操作。spark中行动操作分为两类：一类的操作结果变成scala集合或变量，另一类的操作是将RDD保存到外部文件系统或者数据库中。 ###创建RDD 并行化集合创建操作 使用SparkContext的parallelize方法，在一个已经存在的scala集合上创建。集合的对象将会被复制，创建出一个可以被并行操作的分布式数据集。 外部存储创建操作 spark可以将任何Hadoop所支持的存储资源转换成RDD。 RDD依赖关系主要分为窄依赖和宽依赖： 窄依赖：每个父RDD的分区都至多被一个子RDD的分区使用。 宽依赖：多个子RDD的分区依赖一个父RDD的分区。 读取文件 wordmap的依赖关系是OneToOneDependency，属于窄依赖 使用reduceByKey操作对单词进行计数 wordreduce的依赖关系是ShuffleDependency，属于宽依赖 RDD的分区数RDD划分很多的分区（partition）分布到集群的节点中，分区的多少涉及对这个RDD进行并行计算的粒度。分区是个逻辑概念。用户可以在读取文件时指定分区数目。默认数值是改程序所分配到的CPU核数，如果从HDFS进行创建，则默认为文件的副本数。 RDD分区计算（Iterator）spark中RDD计算是以分区为单位的，而且计算函数都是对迭代器复合，不需要保存每次计算的结果。分区计算一般使用mapPartitions等操作进行。1def mapPartitions[U: ClassTag](f: Iterator[T] =&gt; Iterator[U], preservesPartitioning: Boolean = false): RDD[U] f为输入函数，处理每个分区里面的内容。 函数iterfunc把分区中一个元素和他的下个元素组成一个Turple RDD分区函数（Partitioner）spark默认提供两种划分器：哈希分区划分器（HashPartitioner）和范围分区划分器（RangePartitioner），且Partitioner只存在(K, V)类型的RDD中，对于非(K, V)类型的RDD，其Partitioner值为None。 参数4是group_rdd最终拥有的分区数 RDD基本转换操作 map： flatMap： distinct： coalesce：对RDD重新分区。第一个参数是重分区的数目，第二个参数为是否进行shuffle，默认为false。如果重分区的数目大于原分区，则需要设为True。 repartition：是coalesce第二个参数为True时的实现。 randomSplit： union：结果不去重。 mapPartitions mapPartitionsWithIndex zip：将两个同样分区RDD进行合并，键值分别对照组合。分区不同的两个RDD会报异常。 RDD键值转换操作 reduceByKey：将RDD[K, V]中每个K对应的V根据映射函数进行计算。 reduceByKeyLocally：同reduceByKey，不过是将结果映射到一个Map[K, V]中。 join、fullOuterJoin、leftOuterJoin、rightOuterJoin： join 内连接操作： leftOuterJoin 左连接操作： rightOuterJoin 右连接操作： RDD行动操作 aggregate： 进行aggregate操作：先在每个分区中迭代执行 (x:Int, y:Int) =&gt; x + y，并且zeroValue为1，即分区1中为1+5+4+3+2+1=16，分区2中为1+10+9+8+7+6=41再将两个分区进行合并，1+16+41=58 总结本文主要对RDD的四种操作进行了简单汇总，后续将对一些操作函数进行扩充完善。]]></content>
+      <categories>
+        <category>spark学习</category>
+      </categories>
+      <tags>
+        <tag>spark</tag>
+        <tag>RDD</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[scala中的map和flatMap的区别]]></title>
+    <url>%2F2018%2F07%2F16%2Fscala%E4%B8%AD%E7%9A%84map%E5%92%8CflatMap%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[Titan图形数据库学习笔记（一）]]></title>
     <url>%2F2018%2F07%2F10%2FTitan%E5%9B%BE%E5%BD%A2%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
     <content type="text"><![CDATA[Titan数据库简介 Titan 是一个可扩展的图形数据库，结合HBase、Cassandra、BerkeleyDB提供存储功能，ES、Lucene、Solar提供索引功能，可利用Hadoop计算框架对图数据进行分析、统计。经过优化，可用于存储和索引分布于多节点集群的百亿级顶点和边的图，同时，Titan又是一个事务数据库，可以支持数千个并发用户实时执行复杂图形遍历。 框架Titan是一个图形数据库引擎，其本身专注于紧凑图表序列化，丰富的图形数据库建模和高效的查询执行。其框架主要如下: Titan与底层磁盘之间有多个存储和索引适配器： 存储： Cassandra HBase BerkeleyDB 索引： Elasticsearch Solr Lucene Titan提供了三种交互式接口： TitanGraph API TinkPop API Management API Titan数据库环境配置 下载titan-1.0.0-hadoop2.zip解压。 配置文件 进入conf/es文件夹，配置elasticsearch.yml，截取如下： 12345678path.data: db/es/datapath.work: db/es/workpath.logs: logpath.plugins: bin/espluginsnetwork.host: 22.144.110.125transport.tcp.port: 9300http.port: 9200discovery.zen.ping.unicast.hosts: ["hadoop1","hadoop2","hadoop3","hadoop4","hadoop5","hadoop6"] 进入conf文件夹，配置titan-hbase-es.properties，截取如下： 123456789storage.backend=hbasestorage.hostname=hadoop1, hadoop2, hadoop3, hadoop4, hadoop5, hadoop6cache.db-cache = truecache.db-cache-clean-wait = 20cache.db-cache-time = 180000cache.db-cache-size = 0.5index.search.backend=elasticsearchindex.search.hostname=hadoop5index.search.elasticsearch.client-only=true 启动 进入bin目录，运行elasticsearch： 重开终端，运行gremlin.sh： 输入以下脚本： 123graph = TitanFactory.open('../conf/titan-hbase-es.properties')g = graph.traversal()saturn = g.V().has('name', 'saturn').next() 参考资料 http://s3.thinkaurelius.com/docs/titan/1.0.0/getting-started.html http://database.51cto.com/art/201804/570147.htm https://blog.csdn.net/samhacker/article/details/39721131]]></content>
