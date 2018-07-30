@@ -7,13 +7,6 @@
     </url>
 
     <url>
-        <loc>https://shitianming.github.io/categories/CDH%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-        <lastmod>2018-06-29T09:27:18.893Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://shitianming.github.io/categories/%E5%9B%BE%E5%BD%A2%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
         <lastmod>2018-07-11T08:14:23.262Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -21,15 +14,43 @@
     </url>
 
     <url>
-        <loc>https://shitianming.github.io/categories/spark%E5%AD%A6%E4%B9%A0/</loc>
-        <lastmod>2018-07-20T03:32:29.724Z</lastmod>
+        <loc>https://shitianming.github.io/categories/scala/</loc>
+        <lastmod>2018-07-26T09:22:57.192Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://shitianming.github.io/categories/scala/</loc>
-        <lastmod>2018-07-26T09:22:57.192Z</lastmod>
+        <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/spark/</loc>
+        <lastmod>2018-07-30T03:26:09.641Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://shitianming.github.io/categories/CDH%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2018-07-30T03:26:11.322Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://shitianming.github.io/categories/CDH%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
+        <lastmod>2018-07-30T03:26:11.322Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
+        <lastmod>2018-07-30T03:47:27.288Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/yarn/</loc>
+        <lastmod>2018-07-30T03:47:27.288Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

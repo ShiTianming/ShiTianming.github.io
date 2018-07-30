@@ -2,27 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://shitianming.github.io/tags/hadoop/</loc>
-        <lastmod>2018-06-27T02:00:22.475Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://shitianming.github.io/tags/CDH/</loc>
-        <lastmod>2018-06-29T09:27:18.893Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://shitianming.github.io/tags/%E5%8D%8E%E4%B8%BA%E4%BA%91/</loc>
-        <lastmod>2018-06-29T09:27:18.893Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://shitianming.github.io/tags/Titan/</loc>
         <lastmod>2018-07-11T08:14:23.262Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -37,22 +16,50 @@
     </url>
 
     <url>
+        <loc>https://shitianming.github.io/tags/scala/</loc>
+        <lastmod>2018-07-26T09:22:57.192Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://shitianming.github.io/tags/%E5%8D%8E%E4%B8%BA%E4%BA%91/</loc>
+        <lastmod>2018-07-30T03:26:05.775Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://shitianming.github.io/tags/spark/</loc>
-        <lastmod>2018-07-20T03:32:29.724Z</lastmod>
+        <lastmod>2018-07-30T03:26:09.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://shitianming.github.io/tags/RDD/</loc>
-        <lastmod>2018-07-20T03:32:29.724Z</lastmod>
+        <lastmod>2018-07-30T03:26:09.641Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://shitianming.github.io/tags/scala/</loc>
-        <lastmod>2018-07-26T09:22:57.192Z</lastmod>
+        <loc>https://shitianming.github.io/tags/hadoop/</loc>
+        <lastmod>2018-07-30T03:26:11.322Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://shitianming.github.io/tags/CDH/</loc>
+        <lastmod>2018-07-30T03:26:11.322Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://shitianming.github.io/tags/yarn/</loc>
+        <lastmod>2018-07-30T03:47:27.288Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

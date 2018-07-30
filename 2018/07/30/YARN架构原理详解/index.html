@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="yarn," />
 
 
 
@@ -79,14 +79,20 @@
 
 
 
-<meta name="keywords" content="java, scala, hadoop, spark">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天明的博客">
-<meta property="og:url" content="https://shitianming.github.io/tags/Titan/index.html">
+<meta name="description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监视分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
+<meta name="keywords" content="yarn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YARN架构原理详解">
+<meta property="og:url" content="https://shitianming.github.io/2018/07/30/YARN架构原理详解/index.html">
 <meta property="og:site_name" content="天明的博客">
+<meta property="og:description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监视分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/30/YARN架构原理详解/YARN架构原理详解/Snipaste_2018-07-30_11-38-02.png">
+<meta property="og:updated_time" content="2018-07-30T03:47:27.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天明的博客">
+<meta name="twitter:title" content="YARN架构原理详解">
+<meta name="twitter:description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监视分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
+<meta name="twitter:image" content="https://shitianming.github.io/2018/07/30/YARN架构原理详解/YARN架构原理详解/Snipaste_2018-07-30_11-38-02.png">
 
 
 
@@ -116,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://shitianming.github.io/tags/Titan/"/>
+  <link rel="canonical" href="https://shitianming.github.io/2018/07/30/YARN架构原理详解/"/>
 
 
 
 
 
-  <title>标签: Titan | 天明的博客</title>
+  <title>YARN架构原理详解 | 天明的博客</title>
   
 
 
@@ -151,7 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,54 +285,194 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Titan<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shitianming.github.io/2018/07/30/YARN架构原理详解/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="天明">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/image.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天明的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/07/10/Titan图形数据库学习笔记（一）/" itemprop="url">
-              
-                <span itemprop="name">Titan图形数据库学习笔记（一）</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">YARN架构原理详解</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-10T10:55:11+08:00"
-              content="2018-07-10" >
-          07-10
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T11:23:22+08:00">
+                2018-07-30
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/yarn/" itemprop="url" rel="index">
+                    <span itemprop="name">yarn</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/30/YARN架构原理详解/" class="leancloud_visitors" data-flag-title="YARN架构原理详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="YARN基本组件"><a href="#YARN基本组件" class="headerlink" title="YARN基本组件"></a>YARN基本组件</h2><p><strong>YARN的基本理念是将资源管理和任务调度/监视分成两个独立的服务：全局的资源管理器（<code>ResoureManager</code>）和单独任务的<code>ApplicationMaster</code>。</strong> 一个应用既是单独的一个任务，也是一个<code>DAG</code>的任务。<br><img src="YARN架构原理详解/Snipaste_2018-07-30_11-38-02.png" alt=""><br>YARN总体上仍然是<code>master/slave</code>结构，在整个资源管理框架中，<code>ResourceManager</code>是<code>master</code>，<code>NodeManager</code>是<code>slave</code>。<code>ResourceManager</code>负责对各个<code>NodeManager</code>上资源进行统一管理和调度。当用户提交一个应用程序时，需要提供一个用以跟踪和管理这个程序的<code>ApplicationMaster</code>，其负责向<code>ResourceManager</code>申请资源，并要求<code>NodeManager</code>启动可以占用一定资源的任务。由于不同的<code>ApplicationMaster</code>被分布到不同的节点上，因此他们之间不会互相影响。<br><br></p>
+<ol>
+<li><code>ResourceManger</code></li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/yarn/" rel="tag"># yarn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/25/scala之模式匹配/" rel="next" title="scala之模式匹配">
+                <i class="fa fa-chevron-left"></i> scala之模式匹配
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -334,6 +480,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzY0Ni8xNDE3Nw=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -354,8 +509,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -429,6 +593,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN基本组件"><span class="nav-number">1.</span> <span class="nav-text">YARN基本组件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -570,6 +750,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -598,6 +782,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
