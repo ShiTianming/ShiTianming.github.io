@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="YARN," />
 
 
 
@@ -79,14 +79,23 @@
 
 
 
-<meta name="keywords" content="java, scala, hadoop, spark">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天明的博客">
-<meta property="og:url" content="https://shitianming.github.io/categories/CDH环境配置/index.html">
+<meta name="description" content="YARN中有三种调度器可用：FIFO调度器（FIFO Scheduler），容量调度器（Capacity Scheduler）和公平调度器（Fair Scheduler）。 FIFO调度器（FIFO Scheduler）FIFO调度器将应用放置在一个队列中，然后按照提交的顺序（先进先出）运行应用。首先为队列中第一个应用的请求分配资源，第一个应用的请求满足后再依次为队列中下一个应用服务。FIFO调度">
+<meta name="keywords" content="YARN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YARN中的资源调度">
+<meta property="og:url" content="https://shitianming.github.io/2018/07/30/YARN中的资源调度/index.html">
 <meta property="og:site_name" content="天明的博客">
+<meta property="og:description" content="YARN中有三种调度器可用：FIFO调度器（FIFO Scheduler），容量调度器（Capacity Scheduler）和公平调度器（Fair Scheduler）。 FIFO调度器（FIFO Scheduler）FIFO调度器将应用放置在一个队列中，然后按照提交的顺序（先进先出）运行应用。首先为队列中第一个应用的请求分配资源，第一个应用的请求满足后再依次为队列中下一个应用服务。FIFO调度">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/30/YARN中的资源调度/Snipaste_2018-07-30_15-26-45.png">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/30/YARN中的资源调度/Snipaste_2018-07-30_15-31-04.png">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/30/YARN中的资源调度/Snipaste_2018-07-30_15-42-29.png">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/30/YARN中的资源调度/Snipaste_2018-07-30_15-44-31.png">
+<meta property="og:updated_time" content="2018-07-30T08:03:39.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天明的博客">
+<meta name="twitter:title" content="YARN中的资源调度">
+<meta name="twitter:description" content="YARN中有三种调度器可用：FIFO调度器（FIFO Scheduler），容量调度器（Capacity Scheduler）和公平调度器（Fair Scheduler）。 FIFO调度器（FIFO Scheduler）FIFO调度器将应用放置在一个队列中，然后按照提交的顺序（先进先出）运行应用。首先为队列中第一个应用的请求分配资源，第一个应用的请求满足后再依次为队列中下一个应用服务。FIFO调度">
+<meta name="twitter:image" content="https://shitianming.github.io/2018/07/30/YARN中的资源调度/Snipaste_2018-07-30_15-26-45.png">
 
 
 
@@ -116,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="https://shitianming.github.io/categories/CDH环境配置/"/>
+  <link rel="canonical" href="https://shitianming.github.io/2018/07/30/YARN中的资源调度/"/>
 
 
 
 
 
-  <title>分类: CDH环境配置 | 天明的博客</title>
+  <title>YARN中的资源调度 | 天明的博客</title>
   
 
 
@@ -151,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,83 +288,198 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>CDH环境配置<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shitianming.github.io/2018/07/30/YARN中的资源调度/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="天明">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/image.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天明的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/06/28/基于华为云的CDH配置介绍/" itemprop="url">
-              
-                <span itemprop="name">基于华为云的CDH配置介绍</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">YARN中的资源调度</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-28T21:12:03+08:00"
-              content="2018-06-28" >
-          06-28
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T14:58:20+08:00">
+                2018-07-30
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/YARN/" itemprop="url" rel="index">
+                    <span itemprop="name">YARN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/30/YARN中的资源调度/" class="leancloud_visitors" data-flag-title="YARN中的资源调度">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/06/27/CDH伪分布搭建教程/" itemprop="url">
-              
-                <span itemprop="name">CDH伪分布搭建教程</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-27T01:51:55+08:00"
-              content="2018-06-27" >
-          06-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>YARN中有三种调度器可用：FIFO调度器（FIFO Scheduler），容量调度器（Capacity Scheduler）和公平调度器（Fair Scheduler）。</p>
+<h2 id="FIFO调度器（FIFO-Scheduler）"><a href="#FIFO调度器（FIFO-Scheduler）" class="headerlink" title="FIFO调度器（FIFO Scheduler）"></a>FIFO调度器（FIFO Scheduler）</h2><p><img src="Snipaste_2018-07-30_15-26-45.png" alt=""><br>FIFO调度器将应用放置在一个队列中，然后按照提交的顺序（先进先出）运行应用。首先为队列中第一个应用的请求分配资源，第一个应用的请求满足后再依次为队列中下一个应用服务。<br>FIFO调度器优点在于简单易懂，不需要任何配置，但是不适合大集群。大的应用会占用集群中的所有资源，所以每个应用必须等待直到轮到自己运行。</p>
+<h2 id="容量调度器（Capacity-Scheduler）"><a href="#容量调度器（Capacity-Scheduler）" class="headerlink" title="容量调度器（Capacity Scheduler）"></a>容量调度器（Capacity Scheduler）</h2><p><img src="Snipaste_2018-07-30_15-31-04.png" alt=""><br>使用容量调度器时，一个独立的专门队列保证小作业一提交就可以启动，由于队列容量是为那个队列中的作业所保留的，因此这种策略是以整个集群的利用率为代价的。这意味着相比于FIFO调度器，大作业执行的时间要长。<br>容量调度器允许多个组织共享一个集群，每个组织可以分配到全部集群资源的一部分。每个组织被配置一个专门的队列，每个队列被配置为可以使用一定的集群资源。对了可以进一步按层次划分，这样每个组织内的不同用户能够共享该组织队列所分配的资源。在一个队列内，使用FIFO调度策略对应用进行调度。<br>单个作业使用的资源不会超过其队列容量。然而，如果队列中有多个作业，导致队列资源不够用，这时如果仍有可用的空闲资源，那么容量调度器可能会将空余的资源分配给队列中的作业，哪怕这会超过队列容量。这称为“弹性队列”（queue elasticity）。<br>正常操作时，容量调度器不会通过强行终止来抢占容器。因此，如果一个队列一开始资源够用，然后随着需求增长，资源开始不够用时，那么这个队列就只能等着其他队列释放容器资源。一般情况下，为队列设置一个最大容量限制，这样这个队列就不会过多侵占其他队列的容量了。</p>
+<h2 id="公平调度器（Fair-SCheduler）"><a href="#公平调度器（Fair-SCheduler）" class="headerlink" title="公平调度器（Fair SCheduler）"></a>公平调度器（Fair SCheduler）</h2><p><img src="Snipaste_2018-07-30_15-42-29.png" alt=""><br>公平调度器旨在为所有运行的应用公平分配资源。<br>假设有两个用户A和B，分别拥有自己的队列。A启动一个作业，在B没有需求时，A会分配到全部可用资源；当A的作业仍在运行时，B启动一个作业，一段 时间后，每个作业都用到了一半的集群资源。这时，如果B启动了第二个走也且其他作业仍在运行，那么第二个作业将和B的其他作业（这里是第一个）共享资源，因此B的每个作业将占用四分之一的集群资源，而A仍继续占用一半的集群资源。最终的结果是资源在用户之间实现了公平共享。<br><img src="Snipaste_2018-07-30_15-44-31.png" alt=""></p>
+<ul>
+<li>抢占<br>公平调度器支持<strong>抢占</strong>功能。所谓抢占，就是允许调度器终止那些占用资源超过了其公平共享份额的队列的容器，这些融资资源释放后可以分配给资源数量低于应得份额的队列。抢占会降低这个集群的效率，因为被终止的<code>Containers</code>需要重新执行。</li>
+<li>延迟调度<br>如果一个应用请求某个节点，那么极有可能此时有其他容器正在该节点上运行。实践发现，此时如果等待一小段时间（不超过几秒），能够增鸡杂在所请求的节点上分配到一个容器的机会，从而可以提高集群的效率。这个特性称为延迟调度（delay scheduling）。容量调度器和公平调度器都支持延迟调度。</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/YARN/" rel="tag"># YARN</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/30/YARN架构原理详解/" rel="next" title="YARN架构原理详解">
+                <i class="fa fa-chevron-left"></i> YARN架构原理详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -363,6 +487,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzY0Ni8xNDE3Nw=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -383,8 +516,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -458,6 +600,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#FIFO调度器（FIFO-Scheduler）"><span class="nav-number">1.</span> <span class="nav-text">FIFO调度器（FIFO Scheduler）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容量调度器（Capacity-Scheduler）"><span class="nav-number">2.</span> <span class="nav-text">容量调度器（Capacity Scheduler）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公平调度器（Fair-SCheduler）"><span class="nav-number">3.</span> <span class="nav-text">公平调度器（Fair SCheduler）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -599,6 +757,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -627,6 +789,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
