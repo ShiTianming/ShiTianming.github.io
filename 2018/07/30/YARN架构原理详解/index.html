@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="yarn," />
+  <meta name="keywords" content="YARN," />
 
 
 
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监视分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
-<meta name="keywords" content="yarn">
+<meta name="description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监控分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
+<meta name="keywords" content="YARN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="YARN架构原理详解">
 <meta property="og:url" content="https://shitianming.github.io/2018/07/30/YARN架构原理详解/index.html">
 <meta property="og:site_name" content="天明的博客">
-<meta property="og:description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监视分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
+<meta property="og:description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监控分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://shitianming.github.io/2018/07/30/YARN架构原理详解/YARN架构原理详解/Snipaste_2018-07-30_11-38-02.png">
-<meta property="og:updated_time" content="2018-07-30T03:47:27.288Z">
+<meta property="og:image" content="https://shitianming.github.io/2018/07/30/YARN架构原理详解/Snipaste_2018-07-30_11-38-02.png">
+<meta property="og:updated_time" content="2018-07-30T06:48:38.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="YARN架构原理详解">
-<meta name="twitter:description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监视分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
-<meta name="twitter:image" content="https://shitianming.github.io/2018/07/30/YARN架构原理详解/YARN架构原理详解/Snipaste_2018-07-30_11-38-02.png">
+<meta name="twitter:description" content="YARN基本组件YARN的基本理念是将资源管理和任务调度/监控分成两个独立的服务：全局的资源管理器（ResoureManager）和单独任务的ApplicationMaster。 一个应用既是单独的一个任务，也是一个DAG的任务。YARN总体上仍然是master/slave结构，在整个资源管理框架中，ResourceManager是master，NodeManager是slave。Resource">
+<meta name="twitter:image" content="https://shitianming.github.io/2018/07/30/YARN架构原理详解/Snipaste_2018-07-30_11-38-02.png">
 
 
 
@@ -362,8 +362,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/大数据/yarn/" itemprop="url" rel="index">
-                    <span itemprop="name">yarn</span>
+                  <a href="/categories/大数据/YARN/" itemprop="url" rel="index">
+                    <span itemprop="name">YARN</span>
                   </a>
                 </span>
 
@@ -410,10 +410,39 @@
       
 
       
-        <h2 id="YARN基本组件"><a href="#YARN基本组件" class="headerlink" title="YARN基本组件"></a>YARN基本组件</h2><p><strong>YARN的基本理念是将资源管理和任务调度/监视分成两个独立的服务：全局的资源管理器（<code>ResoureManager</code>）和单独任务的<code>ApplicationMaster</code>。</strong> 一个应用既是单独的一个任务，也是一个<code>DAG</code>的任务。<br><img src="YARN架构原理详解/Snipaste_2018-07-30_11-38-02.png" alt=""><br>YARN总体上仍然是<code>master/slave</code>结构，在整个资源管理框架中，<code>ResourceManager</code>是<code>master</code>，<code>NodeManager</code>是<code>slave</code>。<code>ResourceManager</code>负责对各个<code>NodeManager</code>上资源进行统一管理和调度。当用户提交一个应用程序时，需要提供一个用以跟踪和管理这个程序的<code>ApplicationMaster</code>，其负责向<code>ResourceManager</code>申请资源，并要求<code>NodeManager</code>启动可以占用一定资源的任务。由于不同的<code>ApplicationMaster</code>被分布到不同的节点上，因此他们之间不会互相影响。<br><br></p>
+        <h2 id="YARN基本组件"><a href="#YARN基本组件" class="headerlink" title="YARN基本组件"></a>YARN基本组件</h2><p><strong>YARN的基本理念是将资源管理和任务调度/监控分成两个独立的服务：全局的资源管理器（<code>ResoureManager</code>）和单独任务的<code>ApplicationMaster</code>。</strong> 一个应用既是单独的一个任务，也是一个<code>DAG</code>的任务。<br><img src="Snipaste_2018-07-30_11-38-02.png" alt=""><br>YARN总体上仍然是<code>master/slave</code>结构，在整个资源管理框架中，<code>ResourceManager</code>是<code>master</code>，<code>NodeManager</code>是<code>slave</code>。<code>ResourceManager</code>负责对各个<code>NodeManager</code>上资源进行统一管理和调度。当用户提交一个应用程序时，需要提供一个用以跟踪和管理这个程序的<code>ApplicationMaster</code>，其负责向<code>ResourceManager</code>申请资源，并要求<code>NodeManager</code>启动可以占用一定资源的任务。由于不同的<code>ApplicationMaster</code>被分布到不同的节点上，因此他们之间不会互相影响。</p>
+<h3 id="ResourceManger"><a href="#ResourceManger" class="headerlink" title="ResourceManger"></a><strong><code>ResourceManger</code></strong></h3><p><code>ResourceManager</code>是一个全局资源管理器，负责整个系统的资源管理和分配，包括处理客户端的请求、启动\监控<code>Applicationmaster</code>、监控<code>NodeManager</code>、资源的分配和调度。其主要有两个组件构成：调度器（<code>Scheduler</code>）和应用程序管理器(<code>ApplicationsMaster</code>)。</p>
+<ul>
+<li>调度器<br>调度器根据容量、队列等限制条件（如每个队列分配一定的资源、最多执行一定数量的作业等），将系统中的资源分配给各个正在运行的应用程序。该调度器是一个“纯调度器”，其不再从事任何具体应用程序相关的工作，比如不负责监控或跟踪应用的执行状态等，也不负责重新启动因应用执行失败或硬件故障而产生的失败任务。调度器仅根据各个应用的资源需求进行资源分配，资源分配单位用“资源容器”（<code>Resource Container</code>，简称<code>Container</code>）表示。<code>Container</code>是一个动态资源分配单位，它将内存、CPU、磁盘、网络等资源封装在一起，从而限定每个任务使用的资源量。</li>
+<li>应用程序管理器<br>应用程序管理器负责整个系统中所有应用程序，包括应用程序提交、与调度器协商资源以启动<code>ApplicationMaster</code>、监控<code>ApplicationMaster</code>运行状态并在失败时重新启动它等。<h3 id="ApplicationMaster"><a href="#ApplicationMaster" class="headerlink" title="ApplicationMaster"></a><strong><code>ApplicationMaster</code></strong></h3>管理YARN内运行的应用程序的每个实例。其主要是为应用程序申请资源并进一步分配给内部任务，负责协调来自<code>ResoureManager</code>的资源，并通过<code>NodeManger</code>监控<code>Container</code>的执行和资源的使用情况。<h3 id="NodeManager"><a href="#NodeManager" class="headerlink" title="NodeManager"></a><strong><code>NodeManager</code></strong></h3>整个集群中有多个<code>NodeManager</code>，负责每个节点上的资源和使用。<br>功能：</li>
+</ul>
+<ul>
+<li>单个节点上的资源管理和任务；</li>
+<li>处理来自<code>ResourceManager</code>的命令；</li>
+<li>处理来自<code>ApplicationMaster</code>的命令。</li>
+</ul>
+<p><code>NodeManager</code>管理着抽象容器，这些抽象容器代表着一些特定程序使用针对每个节点的资源。<code>NodeManager</code>定时向<code>ResourceManager</code>汇报本节点上的资源使用情况和各个<code>Container</code>的运行状态。</p>
+<h3 id="Container"><a href="#Container" class="headerlink" title="Container"></a><strong><code>Container</code></strong></h3><p><code>Container</code>是YARN中的资源抽象，它封装了某个节点上的多维度资源。当<code>ApplicationManager</code>向<code>ResourceManager</code>申请资源时，<code>ResourceManager</code>为<code>ApplicationManager</code>返回的资源便是用<code>Container</code>表示的。YARN会为每个任务分配一个<code>Container</code>，且该任务只能使用<code>Container</code>中的资源。其是一个动态资源划分单位，是根据应用程序的需求动态生成的。</p>
+<h2 id="YARN的资源管理"><a href="#YARN的资源管理" class="headerlink" title="YARN的资源管理"></a>YARN的资源管理</h2><blockquote>
 <ol>
-<li><code>ResourceManger</code></li>
+<li>资源调度和隔离是YARN作为一个资源管理系统，最重要最基础的两个功能。资源调度由<code>ResourceManager</code>完成，资源隔离由<code>NodeManager</code>完成。</li>
+<li><code>ResourceManager</code>将某个<code>NodeManager</code>上资源分配给任务后，<code>NodeManager</code>需按照要求为任务提供相应的资源，甚至保证这些资源具有独占性，为任务提供基础和保证。</li>
+<li>谈及资源时，主要是内存、CPU、io三种资源。YARN目前仅支持内存、CPU两种资源管理调度。</li>
+<li>内存资源多少决定任务的成败；CPU多少决定任务的快慢。</li>
 </ol>
+</blockquote>
+<h3 id="YARN的内存管理"><a href="#YARN的内存管理" class="headerlink" title="YARN的内存管理"></a><strong>YARN的内存管理</strong></h3><p>YARN允许用户配置每个节点上可用的物理内存资源。因为一个节点上内存会被若干个服务共享，比如一部分给YARN，一部分给hdfs等。YARN配置的只是自己可用的，配置参数主要有：</p>
+<ul>
+<li><code>yarn.nodemanager.resource.memory-mb</code>：表示节点上YARN可以使用的物理内存总量；</li>
+<li><code>yarn.scheduler.minimum-allocation-mb</code>：单个任务可以使用最小物理内存量；</li>
+<li><code>yarn.scheduler.maximum-allocation-mb</code>：单个任务可以申请的最多的内存量。</li>
+</ul>
+<h3 id="YARN的CPU管理"><a href="#YARN的CPU管理" class="headerlink" title="YARN的CPU管理"></a><strong>YARN的CPU管理</strong></h3><p>用户提交应用时，可以指定每个任务需要的虚拟CPU数。相关配置参数如下：</p>
+<ul>
+<li><code>yarn.nodemanager.resource.cpu-vcores</code>：表示该节点上可以使用的虚拟CPU个数；</li>
+<li><code>yarn.scheduler.minimum-allocation-vcores</code>：表示单个任务可以申请的最小CPU个数；</li>
+<li><code>yarn.scheduler.maximum-allocation-vcores</code>：表示单个任务可以申请最多虚拟CPU个数。</li>
+</ul>
 
       
     </div>
@@ -431,7 +460,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/yarn/" rel="tag"># yarn</a>
+            <a href="/tags/YARN/" rel="tag"># YARN</a>
           
         </div>
       
@@ -603,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN基本组件"><span class="nav-number">1.</span> <span class="nav-text">YARN基本组件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN基本组件"><span class="nav-number">1.</span> <span class="nav-text">YARN基本组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ResourceManger"><span class="nav-number">1.1.</span> <span class="nav-text">ResourceManger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApplicationMaster"><span class="nav-number">1.2.</span> <span class="nav-text">ApplicationMaster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeManager"><span class="nav-number">1.3.</span> <span class="nav-text">NodeManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Container"><span class="nav-number">1.4.</span> <span class="nav-text">Container</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN的资源管理"><span class="nav-number">2.</span> <span class="nav-text">YARN的资源管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#YARN的内存管理"><span class="nav-number">2.1.</span> <span class="nav-text">YARN的内存管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#YARN的CPU管理"><span class="nav-number">2.2.</span> <span class="nav-text">YARN的CPU管理</span></a></li></ol></li></ol></div>
             
 
           </div>
