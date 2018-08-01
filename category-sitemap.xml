@@ -28,29 +28,36 @@
     </url>
 
     <url>
-        <loc>https://shitianming.github.io/categories/CDH%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-        <lastmod>2018-07-30T03:26:11.322Z</lastmod>
+        <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/YARN/</loc>
+        <lastmod>2018-07-30T08:47:39.751Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://shitianming.github.io/categories/CDH%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
-        <lastmod>2018-07-30T03:26:11.322Z</lastmod>
+        <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/CDH%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2018-08-01T01:56:53.519Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+        <lastmod>2018-08-01T01:57:01.775Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
-        <lastmod>2018-07-30T08:47:39.751Z</lastmod>
+        <lastmod>2018-08-01T08:12:34.772Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/YARN/</loc>
-        <lastmod>2018-07-30T08:47:39.751Z</lastmod>
+        <loc>https://shitianming.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/MapReduce/</loc>
+        <lastmod>2018-08-01T08:12:34.772Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
