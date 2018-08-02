@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="MapReduce," />
+  <meta name="keywords" content="scala," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="MapReduce之部分源码分析主要对部分重要函数源码进行分析。 OutputCommittersMapReduce使用一个提交协议确保作业和任务都完全成功或者失败。这个行为通过OutputCommitters实现。OutputCommitters的源码如下：12345678910111213141516171819202122232425262728293031323334public abst">
-<meta name="keywords" content="MapReduce">
+<meta name="description" content="简介传值参数（by-value parameter） 在函数调用之前表达式会被求值，例如Int，Long等数值参数类型；传名参数（by-name parameter） 在函数调用前表达式不会被求值，而是作为一个匿名函数传递。在介绍两者区别之前，先说一下 =&amp;gt; 的用法。 =&amp;gt; 用法=&amp;gt; 用法主要有以下几点：  对于值，相当于lambda表达式：   12scala&amp;gt; List">
+<meta name="keywords" content="scala">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MapReduce的工作机制（四）">
-<meta property="og:url" content="https://shitianming.github.io/2018/08/01/MapReduce的工作机制（四）/index.html">
+<meta property="og:title" content="scala之传名参数和传值参数">
+<meta property="og:url" content="https://shitianming.github.io/2018/08/02/scala之传名参数和传值参数/index.html">
 <meta property="og:site_name" content="天明的博客">
-<meta property="og:description" content="MapReduce之部分源码分析主要对部分重要函数源码进行分析。 OutputCommittersMapReduce使用一个提交协议确保作业和任务都完全成功或者失败。这个行为通过OutputCommitters实现。OutputCommitters的源码如下：12345678910111213141516171819202122232425262728293031323334public abst">
+<meta property="og:description" content="简介传值参数（by-value parameter） 在函数调用之前表达式会被求值，例如Int，Long等数值参数类型；传名参数（by-name parameter） 在函数调用前表达式不会被求值，而是作为一个匿名函数传递。在介绍两者区别之前，先说一下 =&amp;gt; 的用法。 =&amp;gt; 用法=&amp;gt; 用法主要有以下几点：  对于值，相当于lambda表达式：   12scala&amp;gt; List">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-01T08:12:34.772Z">
+<meta property="og:updated_time" content="2018-08-02T08:11:46.606Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MapReduce的工作机制（四）">
-<meta name="twitter:description" content="MapReduce之部分源码分析主要对部分重要函数源码进行分析。 OutputCommittersMapReduce使用一个提交协议确保作业和任务都完全成功或者失败。这个行为通过OutputCommitters实现。OutputCommitters的源码如下：12345678910111213141516171819202122232425262728293031323334public abst">
+<meta name="twitter:title" content="scala之传名参数和传值参数">
+<meta name="twitter:description" content="简介传值参数（by-value parameter） 在函数调用之前表达式会被求值，例如Int，Long等数值参数类型；传名参数（by-name parameter） 在函数调用前表达式不会被求值，而是作为一个匿名函数传递。在介绍两者区别之前，先说一下 =&amp;gt; 的用法。 =&amp;gt; 用法=&amp;gt; 用法主要有以下几点：  对于值，相当于lambda表达式：   12scala&amp;gt; List">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://shitianming.github.io/2018/08/01/MapReduce的工作机制（四）/"/>
+  <link rel="canonical" href="https://shitianming.github.io/2018/08/02/scala之传名参数和传值参数/"/>
 
 
 
 
 
-  <title>MapReduce的工作机制（四） | 天明的博客</title>
+  <title>scala之传名参数和传值参数 | 天明的博客</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://shitianming.github.io/2018/08/01/MapReduce的工作机制（四）/">
+    <link itemprop="mainEntityOfPage" href="https://shitianming.github.io/2018/08/02/scala之传名参数和传值参数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="天明">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MapReduce的工作机制（四）</h1>
+          <h1 class="post-title" itemprop="name headline">scala之传名参数和传值参数</h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T15:57:22+08:00">
-                2018-08-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-02T14:20:34+08:00">
+                2018-08-02
               </time>
             
 
@@ -349,19 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/大数据/" itemprop="url" rel="index">
-                    <span itemprop="name">大数据</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/大数据/MapReduce/" itemprop="url" rel="index">
-                    <span itemprop="name">MapReduce</span>
+                  <a href="/categories/scala/" itemprop="url" rel="index">
+                    <span itemprop="name">scala</span>
                   </a>
                 </span>
 
@@ -377,7 +366,7 @@
 
           
           
-             <span id="/2018/08/01/MapReduce的工作机制（四）/" class="leancloud_visitors" data-flag-title="MapReduce的工作机制（四）">
+             <span id="/2018/08/02/scala之传名参数和传值参数/" class="leancloud_visitors" data-flag-title="scala之传名参数和传值参数">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -408,16 +397,60 @@
       
 
       
-        <h2 id="MapReduce之部分源码分析"><a href="#MapReduce之部分源码分析" class="headerlink" title="MapReduce之部分源码分析"></a><strong>MapReduce之部分源码分析</strong></h2><p>主要对部分重要函数源码进行分析。</p>
-<h3 id="OutputCommitters"><a href="#OutputCommitters" class="headerlink" title="OutputCommitters"></a><strong>OutputCommitters</strong></h3><p>MapReduce使用一个提交协议确保作业和任务都完全成功或者失败。这个行为通过<code>OutputCommitters</code>实现。<br><code>OutputCommitters</code>的源码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">OutputCommitter</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setupJob</span><span class="params">(JobContext jobContext)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Deprecated</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cleanupJob</span><span class="params">(JobContext jobContext)</span> <span class="keyword">throws</span> IOException </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">commitJob</span><span class="params">(JobContext jobContext)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    cleanupJob(jobContext);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abortJob</span><span class="params">(JobContext jobContext, JobStatus.State state)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    cleanupJob(jobContext);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setupTask</span><span class="params">(TaskAttemptContext taskContext)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">needsTaskCommit</span><span class="params">(TaskAttemptContext taskContext)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">commitTask</span><span class="params">(TaskAttemptContext taskContext)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abortTask</span><span class="params">(TaskAttemptContext taskContext)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Deprecated</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isRecoverySupported</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isRecoverySupported</span><span class="params">(JobContext jobContext)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> isRecoverySupported();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recoverTask</span><span class="params">(TaskAttemptContext taskContext)</span> <span class="keyword">throws</span> IOException </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>传值参数（by-value parameter）</strong> 在函数调用之前表达式会被求值，例如<code>Int</code>，<code>Long</code>等数值参数类型；<strong>传名参数（by-name parameter）</strong> 在函数调用前表达式不会被求值，而是作为一个匿名函数传递。在介绍两者区别之前，先说一下 <strong>=&gt;</strong> 的用法。</p>
+<h2 id="gt-用法"><a href="#gt-用法" class="headerlink" title="=&gt; 用法"></a>=&gt; 用法</h2><p><strong>=&gt;</strong> 用法主要有以下几点：</p>
 <ul>
-<li><code>setupJob()</code>方法在作业运行前调用，通常用来执行初始化操作。</li>
-<li>如果作业成功，就调用<code>commitJob()</code>方法，在默认的基于文件的实现中，它用于删除临时的工作空间并在输出目录中创建一个名为_SUCCESS的隐藏的标志文件，以此告知文件系统的客户端该作业完成。</li>
-<li>如果作业不成功，就通过状态对象调用<code>abortJob()</code>，以为这该作业是否失败或终止。在默认的实现中，将删除作业的临时工作空间。</li>
-<li>任务级别上。在任务执行之前先调用<code>setupTask()</code>方法，默认实现不做任何事情。因为针对任务输出命名的临时目录在写任务输出的时候被创建。</li>
-<li>任务的提交阶段是可选的，并通过从<code>needsTaskCommit()</code>返回的false值关闭它。这使得执行框架不必为任务运行分布提交协议，也不需要<code>CommitTask()</code>或者<code>abortTask()</code>。</li>
-<li>如果任务成功，就调用<code>commitTask()</code>，在默认的实现中它将临时的任务输出目录移动到最后的输出路径。否则，执行框架调用<code>abortTask()</code>，它负责删除临时的任务输出目录。</li>
-<li>执行框架保证特定任务在有多次任务尝试的情况下，只有一个任务会被提交，其他的则被取消。</li>
+<li><p>对于值，相当于lambda表达式：</p>
+  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; <span class="type">List</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>).map&#123;(x: <span class="type">Int</span>) =&gt; x * <span class="number">2</span>&#125;</span><br><span class="line">res0: <span class="type">List</span>[<span class="type">Int</span>] = <span class="type">List</span>(<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于类型，<strong>=&gt;</strong> 用于分开两端的类型。</p>
+  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; <span class="keyword">val</span> test: <span class="type">Function1</span>[<span class="type">Int</span>, <span class="type">String</span>] = myInt =&gt; <span class="string">"myInt: "</span> + myInt.toString</span><br><span class="line">test: <span class="type">Int</span> =&gt; <span class="type">String</span> = &lt;function1&gt;</span><br><span class="line"></span><br><span class="line">scala&gt; test(<span class="number">10</span>)</span><br><span class="line">res0: <span class="type">String</span> = myInt: <span class="number">10</span></span><br><span class="line"></span><br><span class="line">scala&gt; <span class="keyword">val</span> test: <span class="type">Int</span> =&gt; <span class="type">String</span> = myInt =&gt; <span class="string">"myInt: "</span> + myInt.toString</span><br><span class="line">test: <span class="type">Int</span> =&gt; <span class="type">String</span> = &lt;function1&gt;</span><br><span class="line"></span><br><span class="line">scala&gt; test(<span class="number">10</span>)</span><br><span class="line">res1: <span class="type">String</span> = myInt: <span class="number">10</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果参数为空，即 <strong>=&gt;</strong> 左边为空，形式为 <strong>()=&gt;T</strong>：</p>
+  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; <span class="keyword">val</span> test: <span class="type">Function0</span>[<span class="type">String</span>] = () =&gt; <span class="string">"Hello world"</span></span><br><span class="line">test: () =&gt; <span class="type">String</span> = &lt;function0&gt;</span><br><span class="line"></span><br><span class="line">scala&gt; test()</span><br><span class="line">res11: <span class="type">String</span> = <span class="type">Hello</span> world</span><br><span class="line"></span><br><span class="line">scala&gt; <span class="keyword">val</span> test: () =&gt; <span class="type">String</span> = () =&gt; <span class="string">"Hello world"</span></span><br><span class="line">test: () =&gt; <span class="type">String</span> = &lt;function0&gt;</span><br><span class="line"></span><br><span class="line">scala&gt; test()</span><br><span class="line">res12: <span class="type">String</span> = <span class="type">Hello</span> world</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果无返回值，即形式为 <strong>A[,B,…]=&gt;Unit</strong>：</p>
+  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; <span class="keyword">val</span> test: <span class="type">Function1</span>[<span class="type">Int</span>, <span class="type">Unit</span>] =myInt =&gt; println(myInt)</span><br><span class="line">test: <span class="type">Int</span> =&gt; <span class="type">Unit</span> = &lt;function1&gt;</span><br><span class="line"></span><br><span class="line">scala&gt; test(<span class="number">10</span>)</span><br><span class="line"><span class="number">10</span></span><br><span class="line"></span><br><span class="line">scala&gt; <span class="keyword">val</span> test: <span class="type">Int</span> =&gt; <span class="type">Unit</span> =myInt =&gt; println(myInt)</span><br><span class="line">test: <span class="type">Int</span> =&gt; <span class="type">Unit</span> = &lt;function1&gt;</span><br><span class="line"></span><br><span class="line">scala&gt; test(<span class="number">10</span>)</span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果无参数无返回值，即形式为 <strong>[]=&gt;Unit</strong>：</p>
+  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">scala&gt; <span class="keyword">val</span> test: <span class="type">Function0</span>[<span class="type">Unit</span>] = () =&gt; println(<span class="string">"Hello world"</span>)</span><br><span class="line">test: () =&gt; <span class="type">Unit</span> = &lt;function0&gt;</span><br><span class="line"></span><br><span class="line">scala&gt; test()</span><br><span class="line"><span class="type">Hello</span> world</span><br><span class="line"></span><br><span class="line">scala&gt; <span class="keyword">val</span> test: () =&gt; <span class="type">Unit</span> = () =&gt; println(<span class="string">"Hello world"</span>)</span><br><span class="line">test: () =&gt; <span class="type">Unit</span> = &lt;function0&gt;</span><br><span class="line"></span><br><span class="line">scala&gt; test()</span><br><span class="line"><span class="type">Hello</span> world</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果作为一个函数的参数的类型声明，且坐便没有符号，如<code>def func(param: =&gt; T)</code>。这种形式叫做<strong>传名参数</strong>；</p>
+</li>
+<li>在case语句中，<strong>=&gt;</strong> 用于分隔模式和结果表达式。</li>
+</ul>
+<h2 id="传值参数"><a href="#传值参数" class="headerlink" title="传值参数"></a>传值参数</h2><blockquote>
+<p>先对表达式进行计算，然后将结果带入函数。</p>
+<ul>
+<li>简单类型  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Demo01</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">strToInt</span></span>(s: <span class="type">String</span>) = &#123;</span><br><span class="line">    println(<span class="string">"call strToInt"</span>)</span><br><span class="line">    s.toInt</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    strToInt(&#123;</span><br><span class="line">      println(<span class="string">"call by value"</span>); <span class="string">"10"</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//call by value</span></span><br><span class="line"><span class="comment">//call strToInt</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>复杂类型  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Demo02</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">func</span></span>(f: <span class="type">String</span> =&gt; <span class="type">Int</span> =&gt; <span class="type">Long</span>): <span class="type">Long</span> = &#123;</span><br><span class="line">    println(<span class="string">"call func"</span>)</span><br><span class="line">    f(<span class="string">"1"</span>)(<span class="number">2</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">curry</span></span>(s: <span class="type">String</span>)(i: <span class="type">Int</span>): <span class="type">Long</span> = &#123;</span><br><span class="line">    s.toLong + i.toLong</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    func &#123;</span><br><span class="line">      println(<span class="string">"call by value"</span>)</span><br><span class="line">      curry</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//call by value</span></span><br><span class="line"><span class="comment">//call func</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="传名参数"><a href="#传名参数" class="headerlink" title="传名参数"></a>传名参数</h2><blockquote>
+<p>参数在进入函数后，每次在函数体内调用的时候才会计算。</p>
+<ul>
+<li>简单类型  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Demo01</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">strIoInt</span></span>(s: =&gt; <span class="type">String</span>): <span class="type">Int</span> = &#123;</span><br><span class="line">    println(<span class="string">"call strToInt"</span>)</span><br><span class="line">    s.toInt</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    strIoInt(&#123;</span><br><span class="line">      println(<span class="string">"call by name"</span>)</span><br><span class="line">      <span class="string">"10"</span></span><br><span class="line">    &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">// call strToInt</span></span><br><span class="line"><span class="comment">// call by name</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>复杂类型  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Demo02</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">func</span></span>(f: =&gt; <span class="type">String</span> =&gt; <span class="type">Int</span> =&gt; <span class="type">Long</span>): <span class="type">Long</span> = &#123;</span><br><span class="line">    println(<span class="string">"call func"</span>)</span><br><span class="line">    f(<span class="string">"1"</span>)(<span class="number">2</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">curry</span></span>(s: <span class="type">String</span>)(i: <span class="type">Int</span>): <span class="type">Long</span> = &#123;</span><br><span class="line">    s.toLong + i.toLong</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    func &#123;</span><br><span class="line">      println(<span class="string">"call by name"</span>)</span><br><span class="line">      curry</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">// call func</span></span><br><span class="line"><span class="comment">// call by name</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote>
+<p><strong>() =&gt; T</strong> 可以简写成 <strong>=&gt; T</strong>。</p>
+<ul>
+<li>示例-1  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Demo03</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">strIoInt</span></span>(s: () =&gt; <span class="type">String</span>): <span class="type">Int</span> = &#123;</span><br><span class="line">    println(<span class="string">"call strToInt"</span>)</span><br><span class="line">    s().toInt</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="comment">// 注意调用的顺序</span></span><br><span class="line">    strIoInt(&#123;</span><br><span class="line">      println(<span class="string">"call by value"</span>)</span><br><span class="line">      () =&gt; &#123;</span><br><span class="line">        println(<span class="string">"call by name"</span>); <span class="string">"10"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output：</span></span><br><span class="line"><span class="comment">// call by value</span></span><br><span class="line"><span class="comment">// call strToInt</span></span><br><span class="line"><span class="comment">// call by name</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>示例-2  <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Demo04</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">func</span></span>(f: () =&gt; <span class="type">String</span> =&gt; <span class="type">Int</span> =&gt; <span class="type">Long</span>): <span class="type">Long</span> = &#123;</span><br><span class="line">    println(<span class="string">"call func"</span>)</span><br><span class="line">    f()(<span class="string">"1"</span>)(<span class="number">2</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">curry</span></span>(s: <span class="type">String</span>)(i: <span class="type">Int</span>): <span class="type">Long</span> = &#123;</span><br><span class="line">    s.toLong + i.toLong</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="comment">// 注意调用的顺序</span></span><br><span class="line">    func(&#123;</span><br><span class="line">      println(<span class="string">"call by value"</span>)</span><br><span class="line">      () =&gt; &#123;</span><br><span class="line">        println(<span class="string">"call by name"</span>)</span><br><span class="line">        curry</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">// call by value</span></span><br><span class="line"><span class="comment">// call func</span></span><br><span class="line"><span class="comment">// call by name</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -436,7 +469,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MapReduce/" rel="tag"># MapReduce</a>
+            <a href="/tags/scala/" rel="tag"># scala</a>
           
         </div>
       
@@ -449,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/01/MapReduce的工作机制（三）/" rel="next" title="MapReduce的工作机制（三）">
-                <i class="fa fa-chevron-left"></i> MapReduce的工作机制（三）
+              <a href="/2018/08/01/MapReduce的工作机制（四）/" rel="next" title="MapReduce的工作机制（四）">
+                <i class="fa fa-chevron-left"></i> MapReduce的工作机制（四）
               </a>
             
           </div>
@@ -458,10 +491,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/02/scala之传名参数和传值参数/" rel="prev" title="scala之传名参数和传值参数">
-                scala之传名参数和传值参数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce之部分源码分析"><span class="nav-number">1.</span> <span class="nav-text">MapReduce之部分源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OutputCommitters"><span class="nav-number">1.1.</span> <span class="nav-text">OutputCommitters</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-用法"><span class="nav-number">2.</span> <span class="nav-text">=&gt; 用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传值参数"><span class="nav-number">3.</span> <span class="nav-text">传值参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传名参数"><span class="nav-number">4.</span> <span class="nav-text">传名参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
